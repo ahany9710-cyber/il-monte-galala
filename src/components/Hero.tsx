@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
+import { config } from '../config';
 
 const Hero = () => {
+  const heroVideoSrc = config.heroVideoUrl?.trim() || './hero-video.mp4';
+  const heroPosterSrc = config.heroPosterUrl?.trim() || './video-poster.jpg';
+
   const scrollToForm = () => {
     const formSection = document.getElementById('lead-form');
     if (formSection) {
@@ -18,9 +22,9 @@ const Hero = () => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="./video-poster.jpg"
+          poster={heroPosterSrc}
+          src={heroVideoSrc}
         >
-          <source src="./hero-video.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
           <div className="absolute inset-0 bg-gradient-to-br from-tatweer-orange via-orange-600 to-tatweer-navy" />
         </video>

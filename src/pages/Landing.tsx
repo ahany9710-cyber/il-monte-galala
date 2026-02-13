@@ -4,6 +4,7 @@ import ListingsCarousel from '../components/ListingsCarousel';
 import CommunitiesCarousel from '../components/CommunitiesCarousel';
 import LeadForm from '../components/LeadForm';
 import FAQ from '../components/FAQ';
+import { config } from '../config';
 
 const scrollToForm = () => {
   const formSection = document.getElementById('lead-form');
@@ -45,7 +46,7 @@ const Landing = () => {
           </p>
           <div className="aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden bg-gray-800">
             <video
-              src="./location.mov"
+              src={config.mapVideoUrl?.trim() || './location.mp4'}
               className="w-full h-full object-cover"
               autoPlay
               loop
