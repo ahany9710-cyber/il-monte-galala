@@ -46,14 +46,22 @@ const Landing = () => {
           </p>
           <div className="aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden bg-gray-800">
             <video
-              src={config.mapVideoUrl?.trim() || './location.mp4'}
               className="w-full h-full object-cover"
               autoPlay
               loop
               muted
               playsInline
+              {...(config.mapVideoUrl?.trim() ? { src: config.mapVideoUrl.trim() } : {})}
             >
-              <track kind="captions" />
+              {config.mapVideoUrl?.trim() ? (
+                <track kind="captions" />
+              ) : (
+                <>
+                  <source src="./location.mp4" type="video/mp4" />
+                  <source src="./location.mov" type="video/quicktime" />
+                  <track kind="captions" />
+                </>
+              )}
             </video>
           </div>
         </div>
