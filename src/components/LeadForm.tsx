@@ -293,7 +293,7 @@ const LeadForm = () => {
 
                 <motion.button
                   type="submit"
-                  disabled={!isFormValid() || isSubmitting}
+                  disabled={isSubmitting}
                   whileHover={{ scale: isFormValid() && !isSubmitting ? 1.02 : 1 }}
                   whileTap={{ scale: isFormValid() && !isSubmitting ? 0.98 : 1 }}
                   className={`w-full px-6 py-4 rounded-xl font-semibold text-white transition-all duration-200 shadow-lg ${
