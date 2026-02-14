@@ -18,6 +18,12 @@ export function initGtag(): void {
   }
 
   const id = tagId.trim();
+  // If gtag is already loaded (e.g. from index.html), just ensure config is applied
+  if (typeof window.gtag === 'function') {
+    window.gtag('config', id);
+    return;
+  }
+
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag(...args: unknown[]) {
     window.dataLayer.push(args);
