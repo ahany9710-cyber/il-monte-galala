@@ -112,8 +112,14 @@ const LeadForm = () => {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         body: formDataToSend,
+        redirect: 'manual',
       });
-      const success = res.ok || res.status === 302 || res.status === 301;
+      const success =
+        res.ok ||
+        res.status === 301 ||
+        res.status === 302 ||
+        res.status === 303 ||
+        res.type === 'opaqueredirect';
       if (success) {
         window.location.href = getThankYouUrl();
         return;
