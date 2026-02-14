@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { config } from '../config';
 
@@ -29,6 +30,7 @@ interface FormErrors {
 }
 
 const LeadForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     phoneNumber: '',
@@ -90,10 +92,9 @@ const LeadForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const getThankYouUrl = (): string => {
+  const getThankYouPath = (): string => {
     const base = (typeof import.meta.env.BASE_URL === 'string' ? import.meta.env.BASE_URL : '').replace(/\.$/, '') || '/';
-    const path = base === '/' ? '/thank-you' : `${base.replace(/\/$/, '')}/thank-you`;
-    return `${window.location.origin}${path}`;
+    return base === '/' ? '/thank-you' : `${base.replace(/\/$/, '')}/thank-you`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -121,7 +122,7 @@ const LeadForm = () => {
         res.status === 303 ||
         res.type === 'opaqueredirect';
       if (success) {
-        window.location.href = getThankYouUrl();
+        navigate(getThankYouPath());
         return;
       }
       setIsSubmitting(false);
