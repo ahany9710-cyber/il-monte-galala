@@ -46,7 +46,7 @@ const ListingsCarousel = () => {
           </div>
         </div>
 
-        <div className="relative max-w-5xl mx-auto">
+        <div className="relative max-w-7xl mx-auto">
           {/* Mobile-optimized navigation arrows - larger and more accessible */}
           <button
             onClick={prevListing}
