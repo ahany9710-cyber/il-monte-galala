@@ -90,9 +90,9 @@ const ListingsCarousel = () => {
 
           {/* Main carousel container */}
           <div className="relative overflow-hidden px-12 sm:px-16 md:px-20 lg:px-12">
-            <div className="flex items-center gap-4 lg:grid lg:grid-cols-[1fr_2.5fr_1fr] lg:gap-4">
+            <div className="flex items-center justify-center gap-4">
               {/* Previous card preview (desktop only) */}
-              <div className="hidden lg:block opacity-40 pointer-events-none">
+              <div className="hidden opacity-40 pointer-events-none">
                 <div className="bg-white rounded-xl shadow-md p-4 transform scale-90">
                   <div className="aspect-[4/3] rounded-lg mb-2 overflow-hidden bg-gray-100 min-h-[120px]">
                     {listings[prevIndex].image ? (
@@ -112,7 +112,7 @@ const ListingsCarousel = () => {
               </div>
 
               {/* Main card */}
-              <div className="flex-1 lg:max-w-3xl lg:mx-auto xl:max-w-4xl">
+              <div className="flex-1 lg:max-w-5xl lg:mx-auto xl:max-w-6xl">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentIndex}
@@ -131,7 +131,7 @@ const ListingsCarousel = () => {
                         prevListing();
                       }
                     }}
-                    className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 cursor-grab active:cursor-grabbing touch-none"
+                    className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 lg:p-10 cursor-grab active:cursor-grabbing touch-none"
                   >
                     {/* Swipe hint on mobile - more prominent */}
                     <div className="lg:hidden flex items-center justify-center gap-2 mb-3 pb-3 border-b border-gray-200">
@@ -226,7 +226,7 @@ const ListingsCarousel = () => {
               </div>
 
               {/* Next card preview (desktop only) */}
-              <div className="hidden lg:block opacity-40 pointer-events-none">
+              <div className="hidden opacity-40 pointer-events-none">
                 <div className="bg-white rounded-xl shadow-md p-4 transform scale-90">
                   <div className="aspect-[4/3] rounded-lg mb-2 overflow-hidden bg-gray-100 min-h-[120px]">
                     {listings[nextIndex].image ? (
