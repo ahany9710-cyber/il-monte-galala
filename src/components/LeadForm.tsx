@@ -69,7 +69,15 @@ const LeadForm = () => {
 
   const handleBlur = (name: keyof FormData) => {
     const error = validateField(name, formData[name]);
-    setErrors((prev) => ({ ...prev, [name]: error }));
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      if (error) {
+        newErrors[name] = error;
+      } else {
+        delete newErrors[name];
+      }
+      return newErrors;
+    });
   };
 
   const validateForm = (): boolean => {
@@ -118,10 +126,12 @@ const LeadForm = () => {
   };
 
   const isFormValid = () => {
-    return (
-      formData.phoneNumber.trim() !== '' &&
-      Object.keys(errors).length === 0
-    );
+    // Check if phone number is filled
+    if (formData.phoneNumber.trim() === '') return false;
+    
+    // Check if there are any actual error messages (not undefined)
+    const hasErrors = Object.values(errors).some(error => error !== undefined && error !== '');
+    return !hasErrors;
   };
 
   return (
