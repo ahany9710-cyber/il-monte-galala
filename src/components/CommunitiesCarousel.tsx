@@ -227,7 +227,7 @@ const CommunitiesCarousel = () => {
                 <div
                   key={community.id}
                   ref={index === 0 ? desktopCardRef : undefined}
-                  className="flex-shrink-0 w-[352px] lg:w-[380px]"
+                  className="flex-shrink-0 w-[352px] lg:w-[370px]"
                 >
                   <Card community={community} onDetailsClick={scrollToForm} />
                 </div>
