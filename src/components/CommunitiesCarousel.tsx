@@ -72,7 +72,7 @@ const CommunitiesCarousel = () => {
           className="w-full h-full object-cover object-center"
         />
       </div>
-      <div className="p-4 md:p-5">
+      <div className="p-4 md:p-5 lg:p-6">
         {community.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-2">
             {community.tags.map((tag) => (
@@ -80,8 +80,8 @@ const CommunitiesCarousel = () => {
                 key={tag}
                 className={
                   tag.includes('2030') || tag.includes('Tatweer') || tag === 'IL Monte Galala'
-                    ? 'text-xs font-semibold px-2 py-1 rounded-full bg-orange-100 text-tatweer-orange uppercase tracking-wide'
-                    : 'text-xs text-gray-500 uppercase tracking-wide'
+                    ? 'text-xs lg:text-sm font-semibold px-2 py-1 rounded-full bg-orange-100 text-tatweer-orange uppercase tracking-wide'
+                    : 'text-xs lg:text-sm text-gray-500 uppercase tracking-wide'
                 }
               >
                 {tag}
@@ -89,15 +89,15 @@ const CommunitiesCarousel = () => {
             ))}
           </div>
         )}
-        <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+        <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2">
           {community.name}
         </h3>
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-3">
+        <p className="text-gray-600 text-sm md:text-base lg:text-base lg:leading-relaxed line-clamp-3 lg:line-clamp-4">
           {community.description}
         </p>
         <button
           onClick={onDetailsClick}
-          className="w-full mt-4 py-3 px-4 bg-tatweer-orange text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors"
+          className="w-full mt-4 py-3 px-4 lg:py-4 lg:px-5 lg:text-base bg-tatweer-orange text-white rounded-xl font-semibold hover:bg-orange-600 transition-colors"
         >
           احصل على مزيد من التفاصيل
         </button>
@@ -108,7 +108,7 @@ const CommunitiesCarousel = () => {
 
   return (
     <section id="project-zones" className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-20 bg-gray-50">
-      <div className="container mx-auto">
+      <div className="mx-auto w-full max-w-7xl">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 md:mb-8">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
@@ -130,7 +130,7 @@ const CommunitiesCarousel = () => {
           {/* Navigation arrows */}
           <button
             onClick={prev}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors border border-gray-200"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/90 backdrop-blur-sm shadow-lg lg:shadow-xl flex items-center justify-center hover:bg-white transition-colors border border-gray-200"
             aria-label="السابق"
           >
             <svg
@@ -149,7 +149,7 @@ const CommunitiesCarousel = () => {
           </button>
           <button
             onClick={next}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors border border-gray-200"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-white/90 backdrop-blur-sm shadow-lg lg:shadow-xl flex items-center justify-center hover:bg-white transition-colors border border-gray-200"
             aria-label="التالي"
           >
             <svg
