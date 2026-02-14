@@ -113,7 +113,8 @@ const LeadForm = () => {
         method: 'POST',
         body: formDataToSend,
       });
-      if (res.ok) {
+      const success = res.ok || res.status === 302 || res.status === 301;
+      if (success) {
         window.location.href = getThankYouUrl();
         return;
       }
