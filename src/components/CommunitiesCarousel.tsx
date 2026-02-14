@@ -1,10 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { communities } from '../data/communities';
+
+const GAP_PX = 24; // gap-6 = 1.5rem
 
 const CommunitiesCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(1);
+  const [desktopSlideStep, setDesktopSlideStep] = useState(376);
+  const [isRtl, setIsRtl] = useState(false);
+  const desktopCardRef = useRef<HTMLDivElement>(null);
 
   const scrollToForm = () => {
     const formSection = document.getElementById('lead-form');
@@ -23,6 +28,28 @@ const CommunitiesCarousel = () => {
     updateCardsPerView();
     window.addEventListener('resize', updateCardsPerView);
     return () => window.removeEventListener('resize', updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    setIsRtl(document.documentElement.dir === 'rtl');
+  }, []);
+
+  useEffect(() => {
+    const measureDesktopSlide = () => {
+      if (window.innerWidth < 1024) return;
+      const el = desktopCardRef.current;
+      if (el) {
+        const width = el.offsetWidth;
+        setDesktopSlideStep(width + GAP_PX);
+      }
+    };
+    measureDesktopSlide();
+    window.addEventListener('resize', measureDesktopSlide);
+    const timer = setTimeout(measureDesktopSlide, 100);
+    return () => {
+      window.removeEventListener('resize', measureDesktopSlide);
+      clearTimeout(timer);
+    };
   }, []);
 
   const maxIndex = Math.max(0, communities.length - cardsPerView);
@@ -99,7 +126,7 @@ const CommunitiesCarousel = () => {
           </motion.button>
         </div>
 
-        <div className="relative">
+        <div className="relative max-w-7xl mx-auto">
           {/* Navigation arrows */}
           <button
             onClick={prev}
@@ -192,14 +219,15 @@ const CommunitiesCarousel = () => {
             <motion.div
               className="flex gap-6"
               animate={{
-                x: clampedIndex * -376,
+                x: (isRtl ? 1 : -1) * clampedIndex * desktopSlideStep,
               }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
-              {communities.map((community) => (
+              {communities.map((community, index) => (
                 <div
                   key={community.id}
-                  className="flex-shrink-0 w-[352px]"
+                  ref={index === 0 ? desktopCardRef : undefined}
+                  className="flex-shrink-0 w-[352px] lg:w-[380px]"
                 >
                   <Card community={community} onDetailsClick={scrollToForm} />
                 </div>

@@ -50,7 +50,7 @@ const ListingsCarousel = () => {
           {/* Mobile-optimized navigation arrows - larger and more accessible */}
           <button
             onClick={prevListing}
-            className="absolute left-0 sm:left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 bg-white rounded-full p-3 sm:p-4 md:p-5 shadow-2xl active:bg-orange-50 transition-all duration-200 active:scale-95 border-2 border-gray-200 active:border-tatweer-orange min-w-[48px] min-h-[48px] flex items-center justify-center"
+            className="absolute left-0 sm:left-2 md:left-4 lg:left-2 top-1/2 -translate-y-1/2 z-30 bg-white rounded-full p-3 sm:p-4 md:p-5 shadow-2xl active:bg-orange-50 transition-all duration-200 active:scale-95 border-2 border-gray-200 active:border-tatweer-orange min-w-[48px] min-h-[48px] flex items-center justify-center"
             aria-label="الوحدة السابقة"
           >
             <svg
@@ -70,7 +70,7 @@ const ListingsCarousel = () => {
 
           <button
             onClick={nextListing}
-            className="absolute right-0 sm:right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 bg-white rounded-full p-3 sm:p-4 md:p-5 shadow-2xl active:bg-orange-50 transition-all duration-200 active:scale-95 border-2 border-gray-200 active:border-tatweer-orange min-w-[48px] min-h-[48px] flex items-center justify-center"
+            className="absolute right-0 sm:right-2 md:right-4 lg:right-2 top-1/2 -translate-y-1/2 z-30 bg-white rounded-full p-3 sm:p-4 md:p-5 shadow-2xl active:bg-orange-50 transition-all duration-200 active:scale-95 border-2 border-gray-200 active:border-tatweer-orange min-w-[48px] min-h-[48px] flex items-center justify-center"
             aria-label="الوحدة التالية"
           >
             <svg
@@ -89,10 +89,10 @@ const ListingsCarousel = () => {
           </button>
 
           {/* Main carousel container */}
-          <div className="relative overflow-hidden px-12 sm:px-16 md:px-20 lg:px-0">
-            <div className="flex items-center gap-4">
+          <div className="relative overflow-hidden px-12 sm:px-16 md:px-20 lg:px-12">
+            <div className="flex items-center gap-4 lg:grid lg:grid-cols-[1fr_2.5fr_1fr] lg:gap-4">
               {/* Previous card preview (desktop only) */}
-              <div className="hidden lg:block w-1/6 opacity-40 pointer-events-none">
+              <div className="hidden lg:block opacity-40 pointer-events-none">
                 <div className="bg-white rounded-xl shadow-md p-4 transform scale-90">
                   <div className="aspect-[4/3] rounded-lg mb-2 overflow-hidden bg-gray-100 min-h-[120px]">
                     {listings[prevIndex].image ? (
@@ -112,7 +112,7 @@ const ListingsCarousel = () => {
               </div>
 
               {/* Main card */}
-              <div className="flex-1 lg:flex-none lg:w-4/6">
+              <div className="flex-1 lg:max-w-3xl lg:mx-auto xl:max-w-4xl">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentIndex}
@@ -226,7 +226,7 @@ const ListingsCarousel = () => {
               </div>
 
               {/* Next card preview (desktop only) */}
-              <div className="hidden lg:block w-1/6 opacity-40 pointer-events-none">
+              <div className="hidden lg:block opacity-40 pointer-events-none">
                 <div className="bg-white rounded-xl shadow-md p-4 transform scale-90">
                   <div className="aspect-[4/3] rounded-lg mb-2 overflow-hidden bg-gray-100 min-h-[120px]">
                     {listings[nextIndex].image ? (
