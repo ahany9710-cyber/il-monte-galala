@@ -31,7 +31,7 @@ export const config = {
 
   // رمز التحويل من إعدادات التحويل في Google Ads - يُستخدم في صفحة الشكر فقط
   // Conversion label from Google Ads - used on thank-you page only
-  conversion_label: '',
+  conversion_label: '19hmCPvcm_kbELGfoMpC',
 
   // ——— الفيديوهات (اختياري - للاستضافة الخارجية) ———
   // لو فاضي: يستخدم الملفات من public (./hero-video.mp4، ./location.mp4)
