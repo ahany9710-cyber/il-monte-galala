@@ -10,15 +10,15 @@ export const config = {
 
   // رقم الواتساب (بدون + أو مسافات لاستخدامه في wa.me)
   // WhatsApp number (without + or spaces for wa.me links)
-  whatsappNumber: '201034444282',
+  whatsappNumber: '201080069600',
 
   // رقم الموبايل للمكالمات (مع + للمكالمات)
   // Phone number for calls (with + for tel: links)
-  phoneNumber: '+201021778855',
+  phoneNumber: '+201080069600',
 
   // تنسيق رقم الموبايل للعرض (اختياري - لو فاضي يستخدم phoneNumber)
   // Phone display format (optional - uses phoneNumber if empty)
-  phoneDisplay: '+20 102 177 8855',
+  phoneDisplay: '+20 108 006 9600',
 
   // ——— Google Ads (تهيئة جوجل أدز) ———
   // معرف Google Tag العالمي (مثل AW-XXXXXXXXX) - يُحمّل في كل الصفحات
